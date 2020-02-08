@@ -11,11 +11,13 @@ if [ "$1" = "prod" ]; then
   read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then
     scp -r dist/* $2@athena.dialup.mit.edu:/mit/courseroad/web_scripts/courseroad/
+    scp -r .htaccess $2@athena.dialup.mit.edu:/mit/courseroad/web_scripts/courseroad/
   else
     echo cancelled
   fi
 elif [ "$1" = "dev" ]; then
     scp -r dist/* $2@athena.dialup.mit.edu:/mit/courseroad/web_scripts/courseroad/dev/
+    scp -r .htaccess.dev $2@athena.dialup.mit.edu:/mit/courseroad/web_scripts/courseroad/dev/
 else
   echo "Invalid build location"
 fi
